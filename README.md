@@ -10,12 +10,11 @@
 
 我们使用业界主流且成熟的 Web 开发技术栈，确保项目的可扩展性、稳定性和性能。
 
-|  |
-| :---: |
-| **HTML5, CSS3, JavaScript** (前端构建与交互) |
-| **Java** (后端核心业务逻辑与 API) |
-| **MySQL** (数据存储与管理) |
-| **Java Web 技术** (Servlet/JSP/Spring Boot 等，用于集群开发) |
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
 ---
 
@@ -37,7 +36,7 @@
 * **核心功能：** 商品浏览、内容发布、广告展示。
 * **用户体验：** 游客可以浏览丰富的商品信息。
 * **管理员操作：** 负责上传和管理商品内容。
-* **广告集成：** 在页面显眼位置展示来自广告网站的**免费广告**，实现内容与商业的结合。
+* **广告集成：** 在页面显眼位置展示来自广告网站的广告，实现内容与商业的结合。
 
 #### 3. 📺 视频网站 (面向视频观众)
 
