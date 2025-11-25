@@ -29,32 +29,6 @@
 
 ---
 
-## 🗂 项目结构
-news/
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/servlet/news/
-│       │       ├── model/        → News 实体类
-│       │       ├── dao/          → NewsDAO 数据访问层
-│       │       └── servlet/      → NewsServlet, AdminLoginServlet, AdminNewsServlet
-│       └── webapp/
-│           ├── css/style.css     → 全局样式
-│           ├── ads/              → 广告占位页面
-│           └── WEB-INF/views/    → JSP 页面（受保护）
-│               ├── index.jsp
-│               ├── news-detail.jsp
-│               └── admin/
-│                   ├── login.jsp
-│                   └── dashboard.jsp
-└── db/
-└── schema.sql                → 数据库建表脚本（示例）
-
-text
-编辑
-
----
-
 ## 🚀 快速部署
 
 ### 1. 创建数据库
@@ -78,24 +52,31 @@ CREATE TABLE admin (
 );
 
 INSERT INTO admin (username, password) VALUES ('admin', '123456'); -- 添加默认管理员，可自行修改
-2. 配置数据库连接
-修改 src/main/resources/db.properties（或硬编码在 DAO 中）：
+```
+### 2. 配置数据库连接
+- 修改 src/main/resources/db.properties（或硬编码在 DAO 中）：
 
-properties
-编辑
+```properties
 db.url=jdbc:mysql://localhost:3306/news_db?useSSL=false&serverTimezone=Asia/Shanghai
 db.username=your_username  # 修改为你的用户名
 db.password=your_password  # 修改为你的密码
-3. 构建并部署
-Maven 项目：运行 mvn clean package，将生成的 .war 文件放入 Tomcat 的 webapps/ 目录
-IDE 直接运行：在 Eclipse/IDEA 中配置 Tomcat Server，直接启动
-4. 访问应用
-前台首页：http://localhost:8080/news/index
-管理后台：http://localhost:8080/news/admin/login
-📝 待办事项（未来可扩展）
- 添加用户注册/登录（前台）
- 新闻分页功能
- 广告系统集成
- 使用 Filter 统一权限控制
- 密码加密存储（如 MD5/BCrypt）
- 响应式前端适配移动端
+```
+
+### 3. 构建并部署
+- Maven 项目：运行 mvn clean package，将生成的 .war 文件放入 Tomcat 的 webapps/ 目录
+- IDE 直接运行：在 Eclipse/IDEA 中配置 Tomcat Server，直接启动
+
+### 4. 访问应用
+- 前台首页：http://localhost:8080/news/index
+- 管理后台：http://localhost:8080/news/admin/login
+
+---
+
+## 📝 待办事项（未来可扩展）
+- 添加用户注册/登录（前台）
+- 新闻分页功能
+- 广告系统集成
+- 使用 Filter 统一权限控制
+- 密码加密存储（如 MD5/BCrypt）
+
+---
