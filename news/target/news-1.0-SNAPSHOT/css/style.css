@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    grid-column: 1 / span 3;
+    padding: 10px 0;
+    background: #203d80;
+    margin-bottom: 20px;
+    display: flex;               /* 启用弹性布局 */
+    justify-content: space-between; /* 或 space-around / stretch */
+    align-items: center;         /* 垂直居中（可选） */
+}
+
+nav a {
+    flex: 1;                     /* 每个链接平均分配宽度 */
+    text-align: center;          /* 文字在其容器内居中 */
+    text-decoration: none;
+    padding: 10px 0;
+    color: white;
+    transition: all 0.3s ease;
+    border-radius: 55px;
+}
+
+nav a:hover {
+    background: crimson;
+    font-weight: bold;
+}
+
+.ad-left, .ad-right {
+    background: #f0f0f0;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+
+main {
+    padding: 0 10px;
+}
+
+.news-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.news-item h3 {
+    font-size: 1.3em;
+}
+
+.news-item a {
+    text-decoration: none;
+    color: #222;
+}
+
+.news-item a:hover {
+    color: #007bff;
+}
+
+.meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.content {
+    margin-top: 15px;
+    line-height: 1.8;
+}
