@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ad.mapper.AdMapper">
+    <resultMap id="AdResultMap" type="com.example.ad.entity.Ad">
+        <id column="id" property="id"/>
+        <result column="ad_id" property="adId"/>
+        <result column="ad_type" property="adType"/>
+        <result column="resource_url" property="resourceUrl"/>
+        <result column="ad_title" property="adTitle"/>
+        <result column="video_duration" property="videoDuration"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!-- 新增广告 -->
+    <insert id="insertAd" parameterType="com.example.ad.entity.Ad">
+        INSERT INTO ad_info (
+            ad_id, ad_type, resource_url, ad_title, video_duration, create_time
+        ) VALUES (
+                     #{adId}, #{adType}, #{resourceUrl}, #{adTitle}, #{videoDuration}, NOW()
+                 )
+    </insert>
+
+    <!-- 查询所有广告 -->
+    <select id="listAllAds" resultMap="AdResultMap">
+        SELECT * FROM ad_info ORDER BY create_time DESC
+    </select>
+</mapper>

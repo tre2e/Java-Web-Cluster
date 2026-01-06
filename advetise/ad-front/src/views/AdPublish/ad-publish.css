@@ -1,0 +1,22 @@
+/* src/views/AdPublish/ad-publish.css */
+/* 广告发布页面专属样式（补充全局样式外的个性化） */
+.card h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+/* 视频时长输入框样式 */
+.form-item input[type="number"] {
+    width: 300px;
+}
+
+/* 按钮hover效果 */
+.btn-primary:hover {
+    background: #66b1ff;
+}
+
+.btn-default:hover {
+    border-color: #dcdcdc;
+    background: #f5f5f5;
+}
