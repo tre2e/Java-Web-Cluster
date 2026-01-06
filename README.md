@@ -86,7 +86,7 @@
 | :-------: | :---------------: |
 | 伍岳伟 | [tre2e](https://github.com/tre2e) |
 | 王梓严 | [Hoshino-123](https://github.com/Hoshino-123) |
-| 王福阳 | [qwq-awe](https://github.com/qwq-awe) |
+| 王福阳 | [qwq-no](https://github.com/qwq-no) |
 
 ---
 
