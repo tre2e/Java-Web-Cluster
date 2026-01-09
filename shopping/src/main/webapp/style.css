@@ -278,3 +278,24 @@ button:hover {
     padding: 40px 0;
     color: #999;
 }
+
+/* 广告专用样式，可根据实际广告图片尺寸调整 */
+.ad-container {
+    text-align: center;
+    margin: 30px auto;
+    width: 100%;
+}
+.ad-iframe {
+    width: 640px;          /* 常见广告宽度，可改成 100% 实现响应式 */
+    height: 800px;         /* 根据当前广告图片高度调整 */
+    border: none;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+    .ad-iframe {
+        width: 100%;
+        height: 600px;     /* 手机端适当缩小 */
+    }
+}

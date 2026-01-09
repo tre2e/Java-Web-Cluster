@@ -48,6 +48,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+<!--   添加json解析     -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
     </dependencies>
 
     <build>
