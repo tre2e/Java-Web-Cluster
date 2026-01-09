@@ -1,15 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <title>智能广告展示</title>
     <style>
-        body { margin:0; padding:0; background:#f9f9f9; font-size:12px; color:#999; }
-        .ad { padding:20px; text-align:center; }
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .ad {
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            max-width: 100%;
+            width: fit-content;
+        }
+        .ad img,
+        .ad video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+            margin: 0 auto;
+        }
+        .ad-title {
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .loading {
+            color: #666;
+        }
+        .error {
+            color: #e74c3c;
+        }
     </style>
 </head>
 <body>
-<div class="ad">
-    广告位<br>
-    （未来接入广告API）
+<div class="ad" id="adContainer">
+    <div class="loading">正在加载广告...</div>
 </div>
+
+<script>
+    const adApiUrl = "http://10.100.164.21:8082/api/ad/get";
+
+    fetch(adApiUrl)
+        .then(response => {
+            if (!response.ok) throw new Error("网络响应异常");
+            return response.json();
+        })
+        .then(data => {
+            const container = document.getElementById("adContainer");
+
+            if (data.code === 200 && data.data) {
+                const ad = data.data;
+                let element;
+
+                if (ad.adType === "image") {
+                    element = document.createElement("img");
+                    element.src = ad.resourceUrl;
+                    element.alt = ad.adTitle || "广告图片";
+                }
+                else if (ad.adType === "video") {
+                    element = document.createElement("video");
+                    element.src = ad.resourceUrl;
+                    element.autoplay = true;
+                    element.muted = true;
+                    element.playsInline = true;
+                    element.preload = "auto";
+                }
+                else {
+                    container.innerHTML = `<div class="error">不支持的广告类型：${ad.adType}</div>`;
+                    return;
+                }
+
+                element.style.maxWidth = "500px";
+                element.style.width = "100%";
+
+                const titleEl = document.createElement("div");
+                titleEl.className = "ad-title";
+                titleEl.textContent = ad.adTitle || "广告";
+
+                container.innerHTML = "";
+                container.appendChild(element);
+                container.appendChild(titleEl);
+
+                if (ad.adType === "video") {
+                    element.addEventListener("ended", () => {
+                        console.log("视频广告播放完成");
+                    });
+                }
+            } else {
+                container.innerHTML = `<div class="error">广告返回错误：${data.msg || '未知错误'}</div>`;
+            }
+        })
+        .catch(error => {
+            console.error("广告加载失败:", error);
+            document.getElementById("adContainer").innerHTML = `<div class="error">广告加载失败</div>`;
+        });
+</script>
 </body>
 </html>
