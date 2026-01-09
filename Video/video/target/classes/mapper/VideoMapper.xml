@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.video.dao.VideoMapper">
+    <resultMap id="VideoResultMap" type="com.example.video.entity.Video">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="sort" property="sort" />
+        <result column="filename" property="filename" />
+        <result column="path" property="path" />
+        <result column="thumbnail" property="thumbnail" />
+        <result column="upload_time" property="upload_time" />
+    </resultMap>
+
+    <insert id="insertVideo" parameterType="com.example.video.entity.Video"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO videos (title,sort,filename,path,thumbnail,upload_time)
+        VALUES (#{title}, #{sort}, #{filename},#{path}, #{thumbnail}, #{upload_time})
+    </insert>
+
+    <select id="getVideoById" parameterType="Integer" resultMap="VideoResultMap">
+        SELECT id, title, filename, path, thumbnail, sort, upload_time
+        FROM videos WHERE id = #{id}
+    </select>
+
+    <select id="listAllVideos" resultMap="VideoResultMap">
+        SELECT id, title, filename, path, thumbnail, sort, upload_time
+        FROM videos ORDER BY upload_time DESC
+    </select>
+
+    <update id="updateVideoById" parameterType="com.example.video.entity.Video">
+        UPDATE videos
+        <set>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="sort != null and sort != ''">sort = #{sort},</if>
+            <if test="path != null and path != ''">path = #{path},</if>
+            <if test="thumbnail != null and thumbnail != ''">thumbnail = #{thumbnail},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteVideoById" parameterType="Integer">
+        DELETE FROM videos WHERE id = #{id}
+    </delete>
+</mapper>
